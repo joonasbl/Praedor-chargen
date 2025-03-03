@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccsoyt3b2j127"]
+
+[ext_resource type="Script" path="res://ominaisuus.gd" id="1_ay6sq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lpepd"]
+font_size = 29
+
+[sub_resource type="LabelSettings" id="LabelSettings_dimi7"]
+font_size = 24
+font_color = Color(0.237763, 0.757342, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 178.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_ay6sq")
+
+[node name="Ominaisuus" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Arvo" type="Label" parent="Ominaisuus"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_lpepd")
+horizontal_alignment = 1
+
+[node name="Nimi" type="Label" parent="Ominaisuus"]
+layout_mode = 2
+text = "Voima"
+label_settings = SubResource("LabelSettings_dimi7")
+horizontal_alignment = 1

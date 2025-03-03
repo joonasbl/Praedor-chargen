@@ -1,0 +1,165 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckqal02chitpb"]
+
+[ext_resource type="Script" path="res://menu_bar.gd" id="1_u8ap0"]
+[ext_resource type="PackedScene" uid="uid://ccsoyt3b2j127" path="res://Ominaisuus.tscn" id="2_81j1v"]
+[ext_resource type="Script" path="res://ominaisuudet.gd" id="2_d4mr3"]
+[ext_resource type="FontFile" uid="uid://cnippi6ihtik0" path="res://OldLondon.ttf" id="4_pn5ly"]
+
+[sub_resource type="SystemFont" id="SystemFont_ybwjj"]
+
+[sub_resource type="Theme" id="Theme_bq7ep"]
+default_font = SubResource("SystemFont_ybwjj")
+default_font_size = 16
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_bq7ep")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 24.963
+anchor_bottom = 17.473
+offset_right = 1.48004
+offset_bottom = 1.08002
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="MenuBar" type="MenuBar" parent="Panel/VBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text_direction = 1
+script = ExtResource("1_u8ap0")
+
+[node name="File" type="PopupMenu" parent="Panel/VBoxContainer2/MarginContainer/MenuBar"]
+size = Vector2i(400, 100)
+item_count = 3
+item_0/text = "Save"
+item_1/text = "Load"
+item_1/id = 1
+item_2/text = "Quit"
+item_2/id = 2
+
+[node name="Container" type="PanelContainer" parent="Panel/VBoxContainer2"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="Panel/VBoxContainer2/Container"]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_vertical = 0
+current_tab = 0
+tab_count = 3
+tab_0/title = "Ominaisuudet"
+tab_1/title = "Edut/haitat"
+tab_2/title = "Taidot"
+
+[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 1
+
+[node name="Ominaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="HBoxCont" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ominaisuudet" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_d4mr3")
+
+[node name="Voima" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" instance=ExtResource("2_81j1v")]
+layout_mode = 2
+om_nimi = "Voima"
+
+[node name="Terveys" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" instance=ExtResource("2_81j1v")]
+layout_mode = 2
+om_nimi = "Terveys"
+
+[node name="Ketteryys" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" instance=ExtResource("2_81j1v")]
+layout_mode = 2
+om_nimi = "Ketteryys"
+
+[node name="Valppaus" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" instance=ExtResource("2_81j1v")]
+layout_mode = 2
+om_nimi = "Valppaus"
+
+[node name="Sisukkuus" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" instance=ExtResource("2_81j1v")]
+layout_mode = 2
+om_nimi = "Sisukkuus"
+
+[node name="Karisma" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" instance=ExtResource("2_81j1v")]
+layout_mode = 2
+om_nimi = "Karisma"
+
+[node name="HeitaOminaisuudet" type="Button" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
+layout_mode = 2
+text = "Heitä
+"
+
+[node name="Edut_Haitat" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_pn5ly")
+theme_override_font_sizes/font_size = 60
+text = "Edut"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_pn5ly")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "[center][u]Haitat[/u][/center]
+"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_pn5ly")
+theme_override_font_sizes/font_size = 60
+text = "Haitat"
+horizontal_alignment = 1
+
+[connection signal="id_pressed" from="Panel/VBoxContainer2/MarginContainer/MenuBar/File" to="Panel/VBoxContainer2/MarginContainer/MenuBar" method="_on_file_id_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]
