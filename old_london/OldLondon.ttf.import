@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cnippi6ihtik0"
-path="res://.godot/imported/OldLondon.ttf-6195f21f5a4a6a0bf1e8f218fe870287.fontdata"
+uid="uid://gtxic3vlhfg5"
+path="res://.godot/imported/OldLondon.ttf-2bac787f7ce2aa3355835fe31ae602ee.fontdata"
 
 [deps]
 
-source_file="res://OldLondon.ttf"
-dest_files=["res://.godot/imported/OldLondon.ttf-6195f21f5a4a6a0bf1e8f218fe870287.fontdata"]
+source_file="res://old_london/OldLondon.ttf"
+dest_files=["res://.godot/imported/OldLondon.ttf-2bac787f7ce2aa3355835fe31ae602ee.fontdata"]
 
 [params]
 

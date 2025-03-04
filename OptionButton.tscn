@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtthbxjn3joqh"]
+
+[ext_resource type="Theme" uid="uid://opnqprf3x2uo" path="res://Normal_theme.tres" id="1_ngl7b"]
+[ext_resource type="Script" uid="uid://cws5qnq7ruxsm" path="res://button.gd" id="2_h4ptt"]
+
+[node name="MarginContainer" type="MarginContainer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_ngl7b")
+text = ""
+script = ExtResource("2_h4ptt")

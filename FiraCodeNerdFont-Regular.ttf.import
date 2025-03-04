@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cnippi6ihtik0"
-path="res://.godot/imported/OldLondon.ttf-6195f21f5a4a6a0bf1e8f218fe870287.fontdata"
+uid="uid://cj7yb6benclj"
+path="res://.godot/imported/FiraCodeNerdFont-Regular.ttf-2be76f901bc0ecad98d57607008d59c8.fontdata"
 
 [deps]
 
-source_file="res://OldLondon.ttf"
-dest_files=["res://.godot/imported/OldLondon.ttf-6195f21f5a4a6a0bf1e8f218fe870287.fontdata"]
+source_file="res://FiraCodeNerdFont-Regular.ttf"
+dest_files=["res://.godot/imported/FiraCodeNerdFont-Regular.ttf-2be76f901bc0ecad98d57607008d59c8.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

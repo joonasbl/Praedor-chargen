@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccsoyt3b2j127"]
 
-[ext_resource type="Script" path="res://ominaisuus.gd" id="1_ay6sq"]
+[ext_resource type="Script" uid="uid://lfgkvtc84ahu" path="res://ominaisuus.gd" id="1_ay6sq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lpepd"]
 font_size = 29
@@ -30,6 +30,6 @@ horizontal_alignment = 1
 
 [node name="Nimi" type="Label" parent="Ominaisuus"]
 layout_mode = 2
-text = "Voima"
+text = "voima"
 label_settings = SubResource("LabelSettings_dimi7")
 horizontal_alignment = 1

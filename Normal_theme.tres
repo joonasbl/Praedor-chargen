@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://opnqprf3x2uo"]
+
+[ext_resource type="FontFile" uid="uid://cj7yb6benclj" path="res://FiraCodeNerdFont-Regular.ttf" id="1_8m34b"]
+
+[resource]
+Button/fonts/font = ExtResource("1_8m34b")
