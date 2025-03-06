@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckqal02chitpb"]
+[gd_scene load_steps=13 format=3 uid="uid://ckqal02chitpb"]
 
 [ext_resource type="Script" uid="uid://bmg0j6j5ex1at" path="res://menu_bar.gd" id="1_u8ap0"]
 [ext_resource type="PackedScene" uid="uid://ccsoyt3b2j127" path="res://Ominaisuus.tscn" id="2_81j1v"]
@@ -8,28 +8,33 @@
 [ext_resource type="Script" uid="uid://bjy1gk27q2syr" path="res://edut.gd" id="5_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://dtthbxjn3joqh" path="res://OptionButton.tscn" id="7_lgr22"]
 [ext_resource type="Theme" uid="uid://opnqprf3x2uo" path="res://Normal_theme.tres" id="8_trn2v"]
-
-[sub_resource type="SystemFont" id="SystemFont_ybwjj"]
+[ext_resource type="FontFile" uid="uid://cj7yb6benclj" path="res://FiraCodeNerdFont-Regular.ttf" id="9_03owx"]
+[ext_resource type="Script" uid="uid://dalbegrd3qqkf" path="res://TaitoCtrl.gd" id="10_20pc6"]
 
 [sub_resource type="Theme" id="Theme_bq7ep"]
-default_font = SubResource("SystemFont_ybwjj")
+default_font = ExtResource("9_03owx")
 default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_wkp8b"]
+default_font_size = 25
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("9_03owx")
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_bq7ep")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 24.963
-anchor_bottom = 17.473
-offset_right = 1.48004
-offset_bottom = 1.08002
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -63,7 +68,6 @@ item_2/text = "Quit"
 item_2/id = 2
 
 [node name="Container" type="PanelContainer" parent="Panel/VBoxContainer2"]
-visible = false
 layout_direction = 2
 layout_mode = 2
 
@@ -81,7 +85,7 @@ tab_2/title = "Taidot"
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 2
 
 [node name="Ominaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
 visible = false
@@ -93,6 +97,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Ominaisuudet" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 script = ExtResource("2_d4mr3")
@@ -127,6 +132,7 @@ text = "Heitä
 "
 
 [node name="Edut_Haitat" type="MarginContainer" parent="Panel/VBoxContainer2/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 11
 metadata/_tab_index = 1
@@ -203,7 +209,19 @@ size_flags_vertical = 3
 [node name="AddButton" type="Button" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto/HBoxContainer/haitat"]
 layout_mode = 2
 theme = ExtResource("8_trn2v")
-text = " Lisää etu"
+text = " Lisää haitta"
+
+[node name="Taidot" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
+layout_mode = 2
+theme = SubResource("Theme_wkp8b")
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VFlowContainer" parent="Panel/VBoxContainer2/TabContainer/Taidot" node_paths=PackedStringArray("ominaisuudet")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_trn2v")
+script = ExtResource("10_20pc6")
+ominaisuudet = NodePath("../../Ominaisuudet/HBoxCont/Ominaisuudet")
 
 [connection signal="id_pressed" from="Panel/VBoxContainer2/MarginContainer/MenuBar/File" to="Panel/VBoxContainer2/MarginContainer/MenuBar" method="_on_file_id_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]

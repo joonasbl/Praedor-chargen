@@ -2,17 +2,21 @@
 extends MarginContainer
 
 
-@onready var arvo: Label = $Ominaisuus/Arvo
+@onready var arvoNode: Label = $Ominaisuus/Arvo
 @onready var nimi: Label = $Ominaisuus/Nimi
 
-
+var arvo: int:
+	set(val): 
+		arvo = val
+		arvoNode.text = str(arvo)
+	get: return arvo
 
 @export var om_nimi = "voima"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	nimi.text = om_nimi
-	arvo.text = "10"
+	arvo = 9
 
 
 func _process(delta: float) -> void:
@@ -34,5 +38,5 @@ func randomize() -> void:
 	numsum = nums.reduce(sum, 0)
 	
 	print(nimi.text + ": " + str(numsum))
-	arvo.text = str(numsum)
+	arvo = numsum
 	

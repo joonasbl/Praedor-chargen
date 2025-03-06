@@ -4,3 +4,4 @@
 
 [resource]
 Button/fonts/font = ExtResource("1_8m34b")
+Label/fonts/font = ExtResource("1_8m34b")
