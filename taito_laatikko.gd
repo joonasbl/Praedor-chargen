@@ -1,10 +1,20 @@
 extends HBoxContainer
 class_name Taito
 @onready var taitoNode: Label = $Taito
-@onready var opittu: Label = $Opittu/Label
+@onready var opittuNode: Label = $Opittu/Label
 @onready var arvoNode: Label = $Arvo
 
+var pohjaArvo: int
 var ominaisuudet: Node
+var opittu: bool:
+	set(val):
+		opittu = val
+		if val:
+			opittuNode.text = ""
+		else:
+			opittuNode.text = ""
+
+signal clicked_this(elem, click_action)
 
 var arvo: int:
 	set(val):
@@ -26,7 +36,7 @@ func _ready() -> void:
 	call_deferred("alusta")
 
 func alusta():
-	await get_tree().create_timer(2.0).timeout
+	#await get_tree().create_timer(2.0).timeout
 		#arvo = arvo
 	nimi = nimi
 	var om = get_om(johtuu)
@@ -35,6 +45,7 @@ func alusta():
 		arvo = 6
 	else:
 		arvo = om/2
+	pohjaArvo = arvo 
 
 static func new_taito(t: String, a: int, j: String, o: Node) -> Taito:
 	var taito: Taito = my_scene.instantiate()
@@ -50,3 +61,12 @@ func get_om(joht: String) -> int:
 		if om.name.to_lower().begins_with(joht):
 			return om.arvo
 	return 0
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if "button_index" in event:
+		print(event)
+		if event.button_index == 1 and event.pressed:
+			clicked_this.emit(self, "increase")
+		elif event.button_index == 2 and event.pressed:
+			clicked_this.emit(self, "decrease")

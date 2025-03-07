@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckqal02chitpb"]
+[gd_scene load_steps=14 format=3 uid="uid://ckqal02chitpb"]
 
 [ext_resource type="Script" uid="uid://bmg0j6j5ex1at" path="res://menu_bar.gd" id="1_u8ap0"]
 [ext_resource type="PackedScene" uid="uid://ccsoyt3b2j127" path="res://Ominaisuus.tscn" id="2_81j1v"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://crvv4346ljcc7" path="res://old_london/Olondon_.otf" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://brwutq4jofod5" path="res://edut_haitat.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://bjy1gk27q2syr" path="res://edut.gd" id="5_3dxm6"]
+[ext_resource type="Script" uid="uid://dc0rot6ao1j8x" path="res://tulokset.gd" id="5_20pc6"]
 [ext_resource type="PackedScene" uid="uid://dtthbxjn3joqh" path="res://OptionButton.tscn" id="7_lgr22"]
 [ext_resource type="Theme" uid="uid://opnqprf3x2uo" path="res://Normal_theme.tres" id="8_trn2v"]
 [ext_resource type="FontFile" uid="uid://cj7yb6benclj" path="res://FiraCodeNerdFont-Regular.ttf" id="9_03owx"]
@@ -85,10 +86,9 @@ tab_2/title = "Taidot"
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 
 [node name="Ominaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -130,6 +130,27 @@ om_nimi = "Karisma"
 layout_mode = 2
 text = "Heitä
 "
+
+[node name="Heitot" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
+layout_mode = 2
+script = ExtResource("5_20pc6")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Heitot"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomPanel" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/BottomPanel"]
+custom_minimum_size = Vector2(93.105, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 36
+text = ""
 
 [node name="Edut_Haitat" type="MarginContainer" parent="Panel/VBoxContainer2/TabContainer"]
 visible = false
@@ -212,6 +233,7 @@ theme = ExtResource("8_trn2v")
 text = " Lisää haitta"
 
 [node name="Taidot" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_wkp8b")
 metadata/_tab_index = 2
@@ -225,3 +247,4 @@ ominaisuudet = NodePath("../../Ominaisuudet/HBoxCont/Ominaisuudet")
 
 [connection signal="id_pressed" from="Panel/VBoxContainer2/MarginContainer/MenuBar/File" to="Panel/VBoxContainer2/MarginContainer/MenuBar" method="_on_file_id_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Heitot" method="_on_heita_ominaisuudet_pressed"]

@@ -2,7 +2,7 @@
 extends MarginContainer
 
 
-@onready var arvoNode: Label = $Ominaisuus/Arvo
+@onready var arvoNode: LineEdit = $Ominaisuus/Arvo
 @onready var nimi: Label = $Ominaisuus/Nimi
 
 var arvo: int:
@@ -16,7 +16,7 @@ var arvo: int:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	nimi.text = om_nimi
-	arvo = 9
+	arvo = 0
 
 
 func _process(delta: float) -> void:

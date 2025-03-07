@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccsoyt3b2j127"]
+[gd_scene load_steps=3 format=3 uid="uid://ccsoyt3b2j127"]
 
 [ext_resource type="Script" uid="uid://lfgkvtc84ahu" path="res://ominaisuus.gd" id="1_ay6sq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_lpepd"]
-font_size = 29
 
 [sub_resource type="LabelSettings" id="LabelSettings_dimi7"]
 font_size = 24
@@ -22,11 +19,11 @@ script = ExtResource("1_ay6sq")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Arvo" type="Label" parent="Ominaisuus"]
+[node name="Arvo" type="LineEdit" parent="Ominaisuus"]
 layout_mode = 2
-text = "10"
-label_settings = SubResource("LabelSettings_lpepd")
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+text = "0"
+alignment = 1
 
 [node name="Nimi" type="Label" parent="Ominaisuus"]
 layout_mode = 2

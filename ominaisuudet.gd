@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_heita_ominaisuudet_pressed() -> void:
+	return
 	var children = get_children()
 	for child in children:
 		child.randomize()
