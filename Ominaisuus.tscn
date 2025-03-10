@@ -19,14 +19,26 @@ script = ExtResource("1_ay6sq")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Arvo" type="LineEdit" parent="Ominaisuus"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Ominaisuus"]
 layout_mode = 2
+alignment = 1
+
+[node name="Arvo" type="LineEdit" parent="Ominaisuus/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "0"
 alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Bonus" type="Label" parent="Ominaisuus/HBoxContainer"]
+layout_mode = 2
 
 [node name="Nimi" type="Label" parent="Ominaisuus"]
 layout_mode = 2
 text = "voima"
 label_settings = SubResource("LabelSettings_dimi7")
 horizontal_alignment = 1
+
+[connection signal="focus_exited" from="Ominaisuus/HBoxContainer/Arvo" to="." method="_on_arvo_focus_exited"]

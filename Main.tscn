@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckqal02chitpb"]
+[gd_scene load_steps=18 format=3 uid="uid://ckqal02chitpb"]
 
 [ext_resource type="Script" uid="uid://bmg0j6j5ex1at" path="res://menu_bar.gd" id="1_u8ap0"]
 [ext_resource type="PackedScene" uid="uid://ccsoyt3b2j127" path="res://Ominaisuus.tscn" id="2_81j1v"]
 [ext_resource type="Script" uid="uid://hcft43pbro8u" path="res://ominaisuudet.gd" id="2_d4mr3"]
+[ext_resource type="Script" uid="uid://bpw5lbd27qcef" path="res://tabit.gd" id="3_c6i3y"]
 [ext_resource type="FontFile" uid="uid://crvv4346ljcc7" path="res://old_london/Olondon_.otf" id="4_cm0pq"]
-[ext_resource type="Script" uid="uid://brwutq4jofod5" path="res://edut_haitat.gd" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://bjy1gk27q2syr" path="res://edut.gd" id="5_3dxm6"]
 [ext_resource type="Script" uid="uid://dc0rot6ao1j8x" path="res://tulokset.gd" id="5_20pc6"]
+[ext_resource type="ButtonGroup" uid="uid://ce2j8u35sg1rk" path="res://BG1.tres" id="6_5vvyt"]
+[ext_resource type="Script" uid="uid://bj00gise4xbcv" path="res://taustat.gd" id="7_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://dtthbxjn3joqh" path="res://OptionButton.tscn" id="7_lgr22"]
 [ext_resource type="Theme" uid="uid://opnqprf3x2uo" path="res://Normal_theme.tres" id="8_trn2v"]
 [ext_resource type="FontFile" uid="uid://cj7yb6benclj" path="res://FiraCodeNerdFont-Regular.ttf" id="9_03owx"]
@@ -15,6 +17,16 @@
 [sub_resource type="Theme" id="Theme_bq7ep"]
 default_font = ExtResource("9_03owx")
 default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20pc6"]
+bg_color = Color(0.30453, 0.630166, 0.224188, 0.576471)
+
+[sub_resource type="GDScript" id="GDScript_c6i3y"]
+script/source = "extends Node
+
+func _ready():
+	name = name.replace(\"_\", \"/\")
+"
 
 [sub_resource type="Theme" id="Theme_wkp8b"]
 default_font_size = 25
@@ -86,9 +98,11 @@ tab_2/title = "Taidot"
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 2
+script = ExtResource("3_c6i3y")
 
 [node name="Ominaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -142,6 +156,98 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_20pc6")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/PanelContainer"]
+visible = false
+layout_mode = 2
+text = "ASD"
+
+[node name="Taustat" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("7_c2ibq")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+text = "Valitse tausta"
+horizontal_alignment = 1
+
+[node name="Aatelinen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+tooltip_text = "Karisma +2
+Heraldiikka, Kilvet, Ratsastus, Uskonto, Veitset, Väistö
+100 Kultarahaa"
+button_group = ExtResource("6_5vvyt")
+text = "Aatelinen"
+
+[node name="Ritari" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+tooltip_text = "Voima +1, Karisma +1
+Heraldiikka, Keihäät, Kilvet, Miekat, Ratsastus, Sotataito, Väistö
+50 kultarahaa"
+button_group = ExtResource("6_5vvyt")
+text = "Ritari"
+
+[node name="Pappi" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Pappi"
+expand_icon = true
+
+[node name="Porvari" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Porvari"
+expand_icon = true
+
+[node name="Kaupunkilainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Kaupunkilainen"
+expand_icon = true
+
+[node name="Maalainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Maalainen"
+expand_icon = true
+
+[node name="Irtolainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Irtolainen"
+expand_icon = true
+
+[node name="Rosvojoukko" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Rosvojoukko"
+expand_icon = true
+
+[node name="Paimentolainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Paimentolainen"
+expand_icon = true
+
+[node name="Vuoristolainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Vuoristolainen"
+expand_icon = true
+
+[node name="Metsäläinen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
+layout_mode = 2
+button_group = ExtResource("6_5vvyt")
+text = "Metsäläinen"
+expand_icon = true
+
 [node name="BottomPanel" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
 layout_mode = 2
 
@@ -160,7 +266,7 @@ metadata/_tab_index = 1
 
 [node name="Edut_Haitat_sisalto" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat"]
 layout_mode = 2
-script = ExtResource("4_fos0i")
+script = SubResource("GDScript_c6i3y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto"]
 layout_mode = 2
@@ -233,7 +339,6 @@ theme = ExtResource("8_trn2v")
 text = " Lisää haitta"
 
 [node name="Taidot" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_wkp8b")
 metadata/_tab_index = 2
@@ -245,6 +350,13 @@ theme = ExtResource("8_trn2v")
 script = ExtResource("10_20pc6")
 ominaisuudet = NodePath("../../Ominaisuudet/HBoxCont/Ominaisuudet")
 
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "Hups!"
+position = Vector2i(275, 320)
+dialog_text = "Tsekkaa että arvot ovat oikein"
+
 [connection signal="id_pressed" from="Panel/VBoxContainer2/MarginContainer/MenuBar/File" to="Panel/VBoxContainer2/MarginContainer/MenuBar" method="_on_file_id_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Heitot" method="_on_heita_ominaisuudet_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/BottomPanel/Button" to="Panel/VBoxContainer2/TabContainer" method="go_to_next"]

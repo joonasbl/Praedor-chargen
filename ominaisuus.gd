@@ -1,10 +1,18 @@
 @tool
 extends MarginContainer
+class_name ominaisuus
 
-
-@onready var arvoNode: LineEdit = $Ominaisuus/Arvo
+@onready var arvoNode: LineEdit = $Ominaisuus/HBoxContainer/Arvo
 @onready var nimi: Label = $Ominaisuus/Nimi
+@onready var bonusNode: Label = $Ominaisuus/HBoxContainer/Bonus
 
+var bonus:int:
+	set(val):
+		bonus = val
+		if val > 0:
+			bonusNode.text = "+" + str(bonus)
+		else:
+			bonusNode.text = ""
 var arvo: int:
 	set(val): 
 		arvo = val
@@ -40,3 +48,12 @@ func randomize() -> void:
 	print(nimi.text + ": " + str(numsum))
 	arvo = numsum
 	
+
+func lock():
+	var confirm = ConfirmationDialog
+	arvoNode.editable = false
+
+func _on_arvo_focus_exited() -> void:
+	var checkVal = arvoNode.text
+	arvo = int(checkVal)
+	pass # Replace with function body.
