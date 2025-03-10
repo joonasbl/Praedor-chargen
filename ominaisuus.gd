@@ -11,6 +11,8 @@ var bonus:int:
 		bonus = val
 		if val > 0:
 			bonusNode.text = "+" + str(bonus)
+		elif val < 0:
+			bonusNode.text = str(bonus)
 		else:
 			bonusNode.text = ""
 var arvo: int:

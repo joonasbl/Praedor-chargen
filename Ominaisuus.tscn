@@ -33,6 +33,7 @@ context_menu_enabled = false
 emoji_menu_enabled = false
 
 [node name="Bonus" type="Label" parent="Ominaisuus/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="Nimi" type="Label" parent="Ominaisuus"]

@@ -40,7 +40,6 @@ func alusta():
 		#arvo = arvo
 	nimi = nimi
 	var om = get_om(johtuu)
-	print(str(om))
 	if om == 0:
 		arvo = 6
 	else:
@@ -57,7 +56,6 @@ static func new_taito(t: String, a: int, j: String, o: Node) -> Taito:
 
 func get_om(joht: String) -> int:
 	for om in ominaisuudet.get_children():
-		print(om.name)
 		if om.name.to_lower().begins_with(joht):
 			return om.arvo
 	return 0
@@ -65,7 +63,6 @@ func get_om(joht: String) -> int:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if "button_index" in event:
-		print(event)
 		if event.button_index == 1 and event.pressed:
 			clicked_this.emit(self, "increase")
 		elif event.button_index == 2 and event.pressed:

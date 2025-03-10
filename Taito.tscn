@@ -10,7 +10,7 @@ script = ExtResource("1_k68v1")
 [node name="Taito" type="Label" parent="."]
 layout_mode = 2
 theme = ExtResource("2_7sviq")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 20
 text = "Alkemia"
 
 [node name="Opittu" type="MarginContainer" parent="."]
@@ -23,14 +23,14 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_7sviq")
 theme_override_fonts/font = ExtResource("3_kyt3o")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Arvo" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 20
 text = "10"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -28,6 +28,7 @@ enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 [global_group]
 
 b1=""
+b2=""
 
 [rendering]
 
