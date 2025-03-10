@@ -16,6 +16,7 @@ func go_to_next():
 		ominaisuudet.lock()
 		_show_next_tab()
 		select_next_available()
+		get_tree().get_first_node_in_group("b1").queue_free()
 	else:
 		var accept = %AcceptDialog
 		accept.show()

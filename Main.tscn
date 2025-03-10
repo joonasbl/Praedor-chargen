@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckqal02chitpb"]
+[gd_scene load_steps=17 format=3 uid="uid://ckqal02chitpb"]
 
 [ext_resource type="Script" uid="uid://bmg0j6j5ex1at" path="res://menu_bar.gd" id="1_u8ap0"]
 [ext_resource type="PackedScene" uid="uid://ccsoyt3b2j127" path="res://Ominaisuus.tscn" id="2_81j1v"]
@@ -20,13 +20,6 @@ default_font_size = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20pc6"]
 bg_color = Color(0.30453, 0.630166, 0.224188, 0.576471)
-
-[sub_resource type="GDScript" id="GDScript_c6i3y"]
-script/source = "extends Node
-
-func _ready():
-	name = name.replace(\"_\", \"/\")
-"
 
 [sub_resource type="Theme" id="Theme_wkp8b"]
 default_font_size = 25
@@ -98,11 +91,10 @@ tab_2/title = "Taidot"
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 script = ExtResource("3_c6i3y")
 
 [node name="Ominaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -196,54 +188,75 @@ text = "Ritari"
 
 [node name="Pappi" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Valppaus +1, Karisma +1
+Esiintyminen, Haavojen hoito, Historia, Kilvet, Lukutaito, Uskonto, Väistö
+40 kultarahaa"
 button_group = ExtResource("6_5vvyt")
 text = "Pappi"
 expand_icon = true
 
 [node name="Porvari" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Valppaus +1, Sisukkuus +1
+Esiintyminen, Kaupanhieronta, Kauppareitit, Kilvet, Lukutaito, Veitset, Väistö
+30 kultarahaa"
 button_group = ExtResource("6_5vvyt")
 text = "Porvari"
 expand_icon = true
 
 [node name="Kaupunkilainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Esiintyminen, Ihmistuntemus, Kadut ja kapakat, Kaupanhieronta, Kilvet, KÄdentaidot, Tappelu, Veitset, Väistö
+20 kultarahaa"
 button_group = ExtResource("6_5vvyt")
 text = "Kaupunkilainen"
 expand_icon = true
 
 [node name="Maalainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Terveys +1
+Haavojen hoito, Kilvet, Kädentaidot, Lyömäaseet, Tappelu, Väistö
+10 kultarahaa"
 button_group = ExtResource("6_5vvyt")
 text = "Maalainen"
 expand_icon = true
 
 [node name="Irtolainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Haavojen hoito, Hiivintä, Kadut ja kapakat, Kaupanhieronta, Kilvet, Sorminäppäryys, Tappelu, Uhkapelit, Väistö
+10 kultarahaa"
 button_group = ExtResource("6_5vvyt")
 text = "Irtolainen"
 expand_icon = true
 
 [node name="Rosvojoukko" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Erätaidot, Haavojen hoito, Hiivintä, Kilvet, Kovistelu, Lyömäaseet, Tappelu, Uhkapelit, Väistö
+20 kultarahaa"
 button_group = ExtResource("6_5vvyt")
 text = "Rosvojoukko"
 expand_icon = true
 
 [node name="Paimentolainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Ketteryys +2, Sisukkuus +1, Karisma -1
+Erätaidot, Haavojen hoito, Heittäminen, Keihäät, Kilvet, Kirottu maa, Ratsastus, Tarut ja legendat, Väistö"
 button_group = ExtResource("6_5vvyt")
 text = "Paimentolainen"
 expand_icon = true
 
 [node name="Vuoristolainen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Voima +2, Terveys +1, Ketteryys -1
+Erätaidot, Hyppy ja kiipeily, Kilvet, Kädentaidot, Kovistelu, Lyömäaseet, Tappelu, Uimataito, Väistö"
 button_group = ExtResource("6_5vvyt")
 text = "Vuoristolainen"
 expand_icon = true
 
 [node name="Metsäläinen" type="CheckBox" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat"]
 layout_mode = 2
+tooltip_text = "Ketteryys +1, Valppaus +2, Karisma -1
+Erätaidot, Hiivintä, Jouset, Kilvet, Metsästys, Sorminäppäryys, Veitset, Väistö, Yrtit ja myrkyt"
 button_group = ExtResource("6_5vvyt")
 text = "Metsäläinen"
 expand_icon = true
@@ -251,7 +264,7 @@ expand_icon = true
 [node name="BottomPanel" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/BottomPanel"]
+[node name="Button" type="Button" parent="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/BottomPanel" groups=["b1"]]
 custom_minimum_size = Vector2(93.105, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -264,9 +277,8 @@ layout_mode = 2
 theme_override_constants/margin_top = 11
 metadata/_tab_index = 1
 
-[node name="Edut_Haitat_sisalto" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat"]
+[node name="Edut_Haitat_sisalto" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat"]
 layout_mode = 2
-script = SubResource("GDScript_c6i3y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto"]
 layout_mode = 2
@@ -338,7 +350,18 @@ layout_mode = 2
 theme = ExtResource("8_trn2v")
 text = " Lisää haitta"
 
+[node name="BottomPanel" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto/BottomPanel"]
+custom_minimum_size = Vector2(93.105, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 36
+text = ""
+
 [node name="Taidot" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_wkp8b")
 metadata/_tab_index = 2

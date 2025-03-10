@@ -25,6 +25,10 @@ window/size/borderless=true
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
+[global_group]
+
+b1=""
+
 [rendering]
 
 renderer/rendering_method.web="forward_plus"
