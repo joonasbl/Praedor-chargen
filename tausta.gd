@@ -14,6 +14,8 @@ func get_skills():
 		return ["Heraldiikka", "Kilvet", "Ratsastus", "Uskonto", "Veitset", "Väistö"]
 	elif name == "Ritari":
 		return ["Heraldiikka", "Keihäät", "Kilvet", "Miekat", "Ratsastus", "Sotataito", "Väistö"]
+	elif name == "Pappi":
+		return ["Esiintyminen", "Haavojen hoito", "Historia", "Kilvet", "Lukutaito", "Uskonto", "Väistö"]
 	elif name == "Porvari":
 		return ["Esiintyminen", "Kaupanhieronta", "Kauppareitit", "Kilvet", "Lukutaito", "Veitset", 
 		"Väistö"]

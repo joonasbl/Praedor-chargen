@@ -3,6 +3,9 @@ class_name Taustat
 
 signal my_tausta_vaihto(obj: Control)
 
+@onready var taidot_content: VFlowContainer = %TaidotContent
+
+
 func check_is_ready():
 	for child in get_children():
 		if child.is_class("CheckBox"):

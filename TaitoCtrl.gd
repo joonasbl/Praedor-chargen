@@ -7,6 +7,8 @@ extends Node
 @onready var separ: HSeparator = $Separ
 @onready var yht: Label = $Yht
 
+var skills
+
 func alusta_taidot() -> void:
 	var content = get_file_contents(filePath)
 	var lines = content.split("\n", false)
@@ -51,3 +53,8 @@ func on_clicked_ominaisuus(taito: HBoxContainer, action: String):
 					yht.lisaa(1)
 				else: 
 					yht.lisaa(2)
+
+
+func _on_taustat_my_tausta_vaihto(obj: Control) -> void:
+	skills = obj.get_skills()
+	print("from taidot content: " + str(skills))

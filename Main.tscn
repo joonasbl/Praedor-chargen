@@ -410,5 +410,6 @@ dialog_text = "Tsekkaa että arvot ovat oikein"
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Heitot" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="my_tausta_vaihto" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_taustan_vaihto"]
+[connection signal="my_tausta_vaihto" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat" to="Panel/VBoxContainer2/TabContainer/Taidot/TaidotContent" method="_on_taustat_my_tausta_vaihto"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/BottomPanel/Button" to="Panel/VBoxContainer2/TabContainer" method="go_to_next"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto/BottomPanel/Button" to="Panel/VBoxContainer2/TabContainer" method="go_to_next"]
