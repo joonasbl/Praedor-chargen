@@ -4,6 +4,7 @@ class_name Taito
 @onready var opittuNode: Label = $Opittu/Label
 @onready var arvoNode: Label = $Arvo
 
+var tausta_taito: bool = false
 var pohjaArvo: int
 var ominaisuudet: Node
 var opittu: bool:
@@ -45,13 +46,16 @@ func alusta():
 	else:
 		arvo = om/2
 	pohjaArvo = arvo 
+	opittu = tausta_taito
 
-static func new_taito(t: String, a: int, j: String, o: Node) -> Taito:
+static func new_taito(t: String, a: int, j: String, o: Node, tausta: bool) -> Taito:
 	var taito: Taito = my_scene.instantiate()
 	taito.nimi = t
 	taito.arvo = a
 	taito.johtuu = j
 	taito.ominaisuudet = o
+	taito.tausta_taito = tausta
+
 	return taito
 
 func get_om(joht: String) -> int:

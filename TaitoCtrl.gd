@@ -7,7 +7,7 @@ extends Node
 @onready var separ: HSeparator = $Separ
 @onready var yht: Label = $Yht
 
-var skills
+var skills = []
 
 func alusta_taidot() -> void:
 	var content = get_file_contents(filePath)
@@ -18,7 +18,7 @@ func alusta_taidot() -> void:
 			break
 		var data = line.split(",", false, 1)
 		var taitonimi = data[0]
-		var t = Taito.new_taito(data[0], 12, data[1], ominaisuudet)
+		var t = Taito.new_taito(data[0], 12, data[1], ominaisuudet, (data[0] in skills))
 		add_child(t)
 		t.clicked_this.connect(on_clicked_ominaisuus)
 		counter+=1
@@ -34,19 +34,21 @@ func on_clicked_ominaisuus(taito: HBoxContainer, action: String):
 	prints(taito.nimi, action)
 	if action == "increase":
 		if taito.opittu:
-			taito.arvo += 1
-			if taito.arvo >= 11:
-				yht.lisaa(-2)
-			else:
-				yht.lisaa(-1)
+			if taito.arvo < 15:
+				taito.arvo += 1
+				if taito.arvo >= 11:
+					yht.lisaa(-2)
+				else:
+					yht.lisaa(-1)
 		else:
 			taito.opittu = true
 			yht.lisaa(-2)
-	else:
+	else: #vähennys
 		if taito.opittu:
 			if taito.pohjaArvo == taito.arvo:
-				taito.opittu = false
-				yht.lisaa(2)
+				if not taito.tausta_taito:
+					taito.opittu = false
+					yht.lisaa(2)
 			else:
 				taito.arvo -= 1
 				if taito.arvo < 10:
