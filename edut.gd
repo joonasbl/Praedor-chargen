@@ -25,7 +25,7 @@ func _on_item_selected(id):
 	for opt in options:
 		var sel = opt.get_selected_id()
 		var text = opt.get_item_text(sel)
-		if text != "":
+		if text != "": 
 			selected.append(text)
 	for opt in options:
 		for item_i in range(opt.item_count):
@@ -55,6 +55,13 @@ func _on_bin_clicked(id):
 	_remove_option(id)
 	_re_sort_opts()
 	print(options)
+	selected.clear()
+	for opt in options:
+		var sel = opt.get_selected_id()
+		var text = opt.get_item_text(sel)
+		if text != "": 
+			selected.append(text)
+	print(selected)
 	
 func _init_option_button(option: OptionButton):
 	option.add_item("")

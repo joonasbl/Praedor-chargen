@@ -299,6 +299,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Edut" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto/HBoxContainer" node_paths=PackedStringArray("painikkeet", "add_button")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_3dxm6")
@@ -333,6 +334,7 @@ text = " Lisää etu"
 layout_mode = 2
 
 [node name="haitat" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto/HBoxContainer" node_paths=PackedStringArray("painikkeet", "add_button")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_3dxm6")
@@ -399,9 +401,12 @@ script = ExtResource("15_j4qnp")
 unique_name_in_owner = true
 title = "Hups!"
 position = Vector2i(275, 320)
+size = Vector2i(312, 100)
 dialog_text = "Tsekkaa että arvot ovat oikein"
 
 [connection signal="id_pressed" from="Panel/VBoxContainer2/MarginContainer/MenuBar/File" to="Panel/VBoxContainer2/MarginContainer/MenuBar" method="_on_file_id_pressed"]
+[connection signal="tab_changed" from="Panel/VBoxContainer2/TabContainer" to="Panel/VBoxContainer2/TabContainer" method="_on_tab_changed"]
+[connection signal="taito_check" from="Panel/VBoxContainer2/TabContainer" to="Panel/VBoxContainer2/TabContainer/Taidot/TaidotContent/Yht" method="on_check"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Heitot" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="my_tausta_vaihto" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_taustan_vaihto"]

@@ -2,10 +2,10 @@ extends Node
 
 @export var ominaisuudet: Node
 @export var filePath = "res://data/taidot.txt"
+@export var tausta_taidot: Array[String]
 
 @onready var separ: HSeparator = $Separ
 @onready var yht: Label = $Yht
-
 
 func alusta_taidot() -> void:
 	var content = get_file_contents(filePath)

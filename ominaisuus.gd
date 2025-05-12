@@ -6,13 +6,26 @@ class_name ominaisuus
 @onready var nimi: Label = $Ominaisuus/Nimi
 @onready var bonusNode: Label = $Ominaisuus/HBoxContainer/Bonus
 
+var locked = false
+
 var bonus:int:
 	set(val):
 		bonus = val
 		if val > 0:
-			bonusNode.text = "+" + str(bonus)
+			if self.locked:
+				bonusNode.text = "(+%d)" % bonus 
+				self.arvo = arvo + val
+				bonus = 0
+				return
+			bonusNode.text = "+%d" % bonus
 		elif val < 0:
-			bonusNode.text = str(bonus)
+			if self.locked:
+				bonusNode.text = "(%d)" % bonus 
+				self.arvo = arvo + val
+				bonus = 0
+				return
+			bonusNode.text = "%d" % bonus
+			
 		else:
 			bonusNode.text = ""
 var arvo: int:
@@ -52,10 +65,10 @@ func randomize() -> void:
 	
 
 func lock():
-	var confirm = ConfirmationDialog
+	self.locked = true
 	arvoNode.editable = false
+	self.bonus = self.bonus
 
 func _on_arvo_focus_exited() -> void:
 	var checkVal = arvoNode.text
 	arvo = int(checkVal)
-	pass # Replace with function body.

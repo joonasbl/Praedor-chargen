@@ -39,6 +39,7 @@ func check_is_ready() -> bool:
 	return true
 
 func add_bonus_to(taito: String, bonus: int):
+	print_debug("adding bonus")
 	var children = get_children()
 	for child in children:
 		if child.nimi.text.to_lower() == taito.to_lower():
