@@ -21,10 +21,6 @@ window/size/viewport_width=1000
 window/size/viewport_height=700
 window/size/borderless=true
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
-
 [global_group]
 
 b1=""
