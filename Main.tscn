@@ -103,10 +103,11 @@ tab_2/title = "Taidot"
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer2" unique_id=1130099337]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 3
 script = ExtResource("3_c6i3y")
 
 [node name="Ominaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer" unique_id=646898777]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -427,7 +428,6 @@ text = ""
 
 [node name="Yhteenveto" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer" unique_id=213455532 node_paths=PackedStringArray("ominaisuudet")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 script = ExtResource("16_sc1dx")
 ominaisuudet = NodePath("../Ominaisuudet/HBoxCont/Ominaisuudet")
