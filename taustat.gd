@@ -1,6 +1,7 @@
 extends VBoxContainer
 class_name Taustat
 
+@warning_ignore("unused_signal")
 signal my_tausta_vaihto(obj: Control)
 
 @onready var taidot_content: VFlowContainer = %TaidotContent
@@ -19,5 +20,5 @@ func lock():
 		if child.is_class("CheckBox"):
 			child.disabled = true
 
-func _on_tausta_toggled(toggled_on: bool) -> void:
+func _on_tausta_toggled(_toggled_on: bool) -> void:
 	pass # Replace with function body.

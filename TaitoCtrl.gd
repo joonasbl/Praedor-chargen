@@ -17,18 +17,18 @@ func alusta_taidot() -> void:
 		if counter == 100:
 			break
 		var data = line.split(",", false, 1)
-		var taitonimi = data[0]
+		var _taitonimi = data[0]
 		var t = Taito.new_taito(data[0], 12, data[1], ominaisuudet, (data[0] in skills))
 		add_child(t)
 		t.clicked_this.connect(on_clicked_ominaisuus)
 		counter+=1
-	var last = get_child_count()
+	var _last = get_child_count()
 	move_child(separ, -1)
 	move_child(yht, -1)
 	
 
 func get_file_contents(file_path) -> String:
-	return FileAccess.open(filePath, FileAccess.READ).get_as_text()
+	return FileAccess.open(file_path, FileAccess.READ).get_as_text()
 
 func on_clicked_ominaisuus(taito: HBoxContainer, action: String):
 	prints(taito.nimi, action)

@@ -20,7 +20,7 @@ func _ready() -> void:
 	_init_option_button(options[0])
 	add_button.pressed.connect(_on_add_button_pressed)
 	
-func _on_item_selected(id):
+func _on_item_selected(_id):
 	selected.clear()
 	for opt in options:
 		var sel = opt.get_selected_id()
@@ -47,10 +47,10 @@ func new_option() -> OptionButton:
 	return option_button
 
 func get_file_contents(file_path):
-	return FileAccess.open(filePath, FileAccess.READ).get_as_text()
+	return FileAccess.open(file_path, FileAccess.READ).get_as_text()
 
 func _on_bin_clicked(id):
-	var removed = options[id]
+	#var removed = options[id]
 	options.remove_at(id)
 	_remove_option(id)
 	_re_sort_opts()

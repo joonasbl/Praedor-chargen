@@ -4,6 +4,10 @@ var tab_bar : TabBar
 var progress:int  = 1
 var yht:Label
 signal taito_check
+@onready var aliominaisuudet: VBoxContainer = %Yhteenveto
+@onready var taito_kontti: Node = %TaitoKontti
+
+
 
 func _ready() -> void:
 	tab_bar = get_tab_bar()
@@ -32,6 +36,14 @@ func go_to_next():
 		_show_next_tab()
 		select_next_available()
 		get_tree().get_first_node_in_group("b2").queue_free()
+		progress += 1
+	elif progress == 3:
+		var yhteenveto = %Yhteenveto
+		_show_next_tab()
+		select_next_available()
+		get_tree().get_first_node_in_group("b3").queue_free()
+		yhteenveto.alusta()
+		taito_kontti.alusta()
 
 func _show_next_tab():
 	for tabi in range(tab_bar.tab_count):
@@ -43,5 +55,6 @@ func _show_next_tab():
 
 func _on_tab_changed(tab: int) -> void:
 	if tab == 2: # Taidot valittu
+		#aliominaisuudet.laske()
 		taito_check.emit()
 		print("tab changed to %d" % tab)

@@ -44,7 +44,7 @@ func alusta():
 	if om == 0:
 		arvo = 6
 	else:
-		arvo = om/2
+		arvo = int(floor(om/2.0))
 	pohjaArvo = arvo 
 	opittu = tausta_taito
 

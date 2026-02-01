@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckqal02chitpb"]
+[gd_scene load_steps=23 format=3 uid="uid://ckqal02chitpb"]
 
 [ext_resource type="Script" uid="uid://bmg0j6j5ex1at" path="res://menu_bar.gd" id="1_u8ap0"]
 [ext_resource type="PackedScene" uid="uid://ccsoyt3b2j127" path="res://Ominaisuus.tscn" id="2_81j1v"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://cyqqxawoq031w" path="res://tausta.gd" id="9_c2ibq"]
 [ext_resource type="Script" uid="uid://dalbegrd3qqkf" path="res://TaitoCtrl.gd" id="10_20pc6"]
 [ext_resource type="Script" uid="uid://smnvvfn0koio" path="res://yht.gd" id="15_j4qnp"]
+[ext_resource type="LabelSettings" uid="uid://bl7nl7mlhyx2m" path="res://om_luku.tres" id="16_fpfj3"]
+[ext_resource type="Script" uid="uid://qkgqewv3ue8j" path="res://yhteenveto.gd" id="16_sc1dx"]
+[ext_resource type="Script" uid="uid://wwvvfk67k2qv" path="res://taito_kontti.gd" id="18_kjvhd"]
 
 [sub_resource type="Theme" id="Theme_bq7ep"]
 default_font = ExtResource("9_03owx")
@@ -27,6 +30,10 @@ bg_color = Color(0.30453, 0.630166, 0.224188, 0.576471)
 default_font_size = 25
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("9_03owx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sc1dx"]
+font_size = 24
+font_color = Color(0.237763, 0.757342, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -383,21 +390,436 @@ layout_mode = 2
 theme = SubResource("Theme_wkp8b")
 metadata/_tab_index = 2
 
-[node name="TaidotContent" type="VFlowContainer" parent="Panel/VBoxContainer2/TabContainer/Taidot" node_paths=PackedStringArray("ominaisuudet")]
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Taidot"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TaidotContent" type="VFlowContainer" parent="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/PanelContainer" node_paths=PackedStringArray("ominaisuudet")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("8_trn2v")
 script = ExtResource("10_20pc6")
-ominaisuudet = NodePath("../../Ominaisuudet/HBoxCont/Ominaisuudet")
+ominaisuudet = NodePath("../../../../Ominaisuudet/HBoxCont/Ominaisuudet")
 
-[node name="Separ" type="HSeparator" parent="Panel/VBoxContainer2/TabContainer/Taidot/TaidotContent"]
+[node name="Separ" type="HSeparator" parent="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/PanelContainer/TaidotContent"]
 layout_mode = 2
 
-[node name="Yht" type="Label" parent="Panel/VBoxContainer2/TabContainer/Taidot/TaidotContent"]
+[node name="Yht" type="Label" parent="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/PanelContainer/TaidotContent"]
 layout_mode = 2
 text = "Yht 100"
 script = ExtResource("15_j4qnp")
+
+[node name="BottomPanel" type="PanelContainer" parent="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/BottomPanel" groups=["b3"]]
+custom_minimum_size = Vector2(93.105, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 36
+text = ""
+
+[node name="Yhteenveto" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer" node_paths=PackedStringArray("ominaisuudet")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("16_sc1dx")
+ominaisuudet = NodePath("../Ominaisuudet/HBoxCont/Ominaisuudet")
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OminaisuudetLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Ominaisuudet"
+horizontal_alignment = 1
+
+[node name="YhtOminaisuudet" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Voima" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nimi" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Voima"]
+layout_mode = 2
+text = "Voima"
+label_settings = SubResource("LabelSettings_sc1dx")
+horizontal_alignment = 1
+
+[node name="Arvo" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Voima"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("16_fpfj3")
+horizontal_alignment = 1
+
+[node name="Terveys" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nimi" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Terveys"]
+layout_mode = 2
+text = "Terveys"
+label_settings = SubResource("LabelSettings_sc1dx")
+horizontal_alignment = 1
+
+[node name="Arvo" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Terveys"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("16_fpfj3")
+horizontal_alignment = 1
+
+[node name="Ketteryys" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nimi" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Ketteryys"]
+layout_mode = 2
+text = "Ketteryys"
+label_settings = SubResource("LabelSettings_sc1dx")
+horizontal_alignment = 1
+
+[node name="Arvo" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Ketteryys"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("16_fpfj3")
+horizontal_alignment = 1
+
+[node name="Valppaus" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nimi" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Valppaus"]
+layout_mode = 2
+text = "Valppaus"
+label_settings = SubResource("LabelSettings_sc1dx")
+horizontal_alignment = 1
+
+[node name="Arvo" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Valppaus"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("16_fpfj3")
+horizontal_alignment = 1
+
+[node name="Sisukkuus" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nimi" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Sisukkuus"]
+layout_mode = 2
+text = "Sisukkuus"
+label_settings = SubResource("LabelSettings_sc1dx")
+horizontal_alignment = 1
+
+[node name="Arvo" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Sisukkuus"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("16_fpfj3")
+horizontal_alignment = 1
+
+[node name="Karisma" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nimi" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Karisma"]
+layout_mode = 2
+text = "Karisma"
+label_settings = SubResource("LabelSettings_sc1dx")
+horizontal_alignment = 1
+
+[node name="Arvo" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/YhtOminaisuudet/Karisma"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("16_fpfj3")
+horizontal_alignment = 1
+
+[node name="AliominaisuudetLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Aliominaisuudet"
+horizontal_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Verikontti" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="VeriLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/Verikontti"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Veri"
+horizontal_alignment = 1
+
+[node name="VeriArvoLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/Verikontti"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "30"
+horizontal_alignment = 1
+
+[node name="Haavakontti" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="HaavaLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/Haavakontti"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Syvä haava"
+horizontal_alignment = 1
+
+[node name="HaavaArvoLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/Haavakontti"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20"
+horizontal_alignment = 1
+
+[node name="VaurioBonuskontti" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="VaurioBonusLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/VaurioBonuskontti"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Vauriobonus"
+horizontal_alignment = 1
+
+[node name="VaurioBonusArvoLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/VaurioBonuskontti"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+10"
+horizontal_alignment = 1
+
+[node name="Kantokykykontti" type="BoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="KantokykyLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/Kantokykykontti"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Kantokyky"
+horizontal_alignment = 1
+
+[node name="KantoKykyArvoLabel" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/BoxContainer2/Kantokykykontti"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+horizontal_alignment = 1
+
+[node name="TaitoKontti" type="VFlowContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("18_kjvhd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer2"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer2"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer3"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer3"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer4"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer4"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer5"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer5"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer6"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer6"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer7"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer7"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer8"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer8"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer9"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer9"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer10"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer10"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer11"]
+layout_mode = 2
+text = "Aaskdjhskjh"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+horizontal_alignment = 2
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer12"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer12"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer13"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer13"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer14"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer14"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer15" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer15"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer15"]
+layout_mode = 2
+text = "12"
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer16"]
+layout_mode = 2
+text = "Alkemia"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer/VBoxContainer/TaitoKontti/HBoxContainer16"]
+layout_mode = 2
+text = "12"
+
+[node name="Taidot" type="VBoxContainer" parent="Panel/VBoxContainer2/TabContainer/Yhteenveto/MarginContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 unique_name_in_owner = true
@@ -408,10 +830,11 @@ dialog_text = "Tsekkaa että arvot ovat oikein"
 
 [connection signal="id_pressed" from="Panel/VBoxContainer2/MarginContainer/MenuBar/File" to="Panel/VBoxContainer2/MarginContainer/MenuBar" method="_on_file_id_pressed"]
 [connection signal="tab_changed" from="Panel/VBoxContainer2/TabContainer" to="Panel/VBoxContainer2/TabContainer" method="_on_tab_changed"]
-[connection signal="taito_check" from="Panel/VBoxContainer2/TabContainer" to="Panel/VBoxContainer2/TabContainer/Taidot/TaidotContent/Yht" method="on_check"]
+[connection signal="taito_check" from="Panel/VBoxContainer2/TabContainer" to="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/PanelContainer/TaidotContent/Yht" method="on_check"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/HeitaOminaisuudet" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Heitot" method="_on_heita_ominaisuudet_pressed"]
 [connection signal="my_tausta_vaihto" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat" to="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/Ominaisuudet" method="_on_taustan_vaihto"]
-[connection signal="my_tausta_vaihto" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat" to="Panel/VBoxContainer2/TabContainer/Taidot/TaidotContent" method="_on_taustat_my_tausta_vaihto"]
+[connection signal="my_tausta_vaihto" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/PanelContainer/Taustat" to="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/PanelContainer/TaidotContent" method="_on_taustat_my_tausta_vaihto"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Ominaisuudet/HBoxCont/BottomPanel/Button" to="Panel/VBoxContainer2/TabContainer" method="go_to_next"]
 [connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Edut_Haitat/Edut_Haitat_sisalto/BottomPanel/Button" to="Panel/VBoxContainer2/TabContainer" method="go_to_next"]
+[connection signal="pressed" from="Panel/VBoxContainer2/TabContainer/Taidot/HBoxContainer/BottomPanel/Button" to="Panel/VBoxContainer2/TabContainer" method="go_to_next"]
